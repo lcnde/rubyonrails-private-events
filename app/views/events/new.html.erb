@@ -1,0 +1,8 @@
+<br><br>
+<%= form_with model: @event do |form| %>
+<%= form.label "Event name" %><br>
+<%= form.text_field :name %><br><br>
+<%= form.label "Date" %>
+<%= form.date_select :date, start_year: Time.now.year, end_year: (Time.now.year + 100) %>
+<%= form.submit %>
+<% end %>
