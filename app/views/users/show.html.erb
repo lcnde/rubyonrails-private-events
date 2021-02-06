@@ -1,5 +1,5 @@
 <h1><%= @user.username %></h1>
-<h3>Hosted events:</h3><%#add the date near each event%>
+<h3>Host of the events:</h3>
 <ul>
   <% Event.where(host: @user.id).each do |event| %>
     <li>
