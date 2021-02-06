@@ -7,22 +7,25 @@
     </li>
   <% end %>
 </ul><br>
+<h3>Upcoming events:</h3>
 <% Invited.where(user_id: @user.id).each do |invited| %>
-  <h3>Upcoming events:</h3>
-    <% if invited.event.date > Time.now %>
-      <ul>
-        <li>
-          <%= link_to invited.event.name, event_path %> <%= invited.event.date %>
-        </li>
-      </ul>
-    <% end %><br>
-  <h3>Previously attended events:</h3>
-      <% if invited.event.date < Time.now %>
-        <ul>
-          <li>
-            <%= link_to invited.event.name, event_path %> <%= invited.event.date %>
-          </li>
-        </ul>
-      <% end %><br>
-<% end %>
+  <% if invited.event.date > Time.now %>
+    <ul>
+      <li>
+        <%= link_to invited.event.name, event_path %> <%= invited.event.date %>
+      </li>
+    </ul>
+  <% end %>
+<% end %><br>
+<h3>Previously attended events:</h3>
+<% Invited.where(user_id: @user.id).each do |invited| %>
+  <% if invited.event.date < Time.now %>
+    <ul>
+      <li>
+        <%= link_to invited.event.name, event_path %> <%= invited.event.date %>
+      </li>
+    </ul>
+  <% end %>
+<% end %><br>
+
 
