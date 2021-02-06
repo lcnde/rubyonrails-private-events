@@ -1,10 +1,25 @@
 <h1>Events Homepage</h1>
 
-<ul>
+<h2>Current events</h2>
   <% @event.each do |event| %>
-    <li>
-      <%= link_to event.name, event %> <%= event.date %>
-    </li>
+    <% if event.date > Time.now %>
+      <ul>
+        <li>
+          <%= link_to event.name, event_path(id: event.id) %>
+        </li>
+      </ul>
+    <% end %>
   <% end %><br><br>
-  <%= link_to "Create new event", new_event_path %>
-</ul>
+<h2>Past events</h2>
+  <% @event.each do |event| %>
+    <% if event.date < Time.now %>
+      <ul>
+        <li>
+          <%= link_to event.name, event_path(id: event.id) %>
+        </li>
+      </ul>
+    <% end %>
+  <% end %><br><br>
+
+<%= link_to "Create new event", new_event_path %>
+
