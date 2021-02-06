@@ -1,6 +1,6 @@
 <h1><%= @event.name %></h1>
 <h3 class="inline">The event is hosted by:</h3> 
-<h2 class="inline"><%= link_to @event.host.username, user_path %></h2><br>
+<h2 class="inline"><%= link_to @event.host.username, user_path(id: @event.host.username) %></h2><br>
 <h3 class="inline">The event will take place in: </h3>
 <h2 class="inline"><%= @event.date %></h2><br>
 <% if current_user.id != @event.host.id %>
@@ -11,9 +11,8 @@
 <ul>
   <% Invited.where(event_id: @event).each do |invited| %>
     <li>
-      <%= invited.user.username %>
+      <%= link_to invited.user.username, user_path(id: invited.user.id) %>
     </li>
   <% end %>
 </ul>
 <br><br>
-<%= link_to "Homepage", events_path %>
