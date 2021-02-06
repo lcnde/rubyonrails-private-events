@@ -1,7 +1,10 @@
 <h1><%= @event.name %></h1>
 <h3 class="inline">The event is hosted by:</h3> 
 <h2 class="inline"><%= @event.host.username %></h2><br><br>
-<p>Partecipate to event: </p><%= button_to "Partecipate", partecipate_path(@event), method: "put" %>
+<% if current_user.id != @event.host.id %>
+<p>Partecipate to event: </p>
+<%= button_to "Partecipate", partecipate_path(@event), method: "put" %>
+<% end %>
 <p>Invited list:</p><br>
 <ul>
   <% Invited.all.each do |invited| %>
