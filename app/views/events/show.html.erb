@@ -7,7 +7,7 @@
 <% end %>
 <p>Invited list:</p><br>
 <ul>
-  <% Invited.all.each do |invited| %>
+  <% Invited.where(event_id: @event).each do |invited| %>
     <li>
       <%= invited.user.username %>
     </li>
