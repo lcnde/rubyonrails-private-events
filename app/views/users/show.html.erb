@@ -3,7 +3,7 @@
 <ul>
   <% Event.where(host: @user.id).each do |event| %>
     <li>
-      <%= link_to event.name, event_path %>
+      <%= link_to event.name, event_path %> <%= event.date %>
     </li>
   <% end %>
 </ul><br>
@@ -12,7 +12,7 @@
     <% if invited.event.date > Time.now %>
       <ul>
         <li>
-          <%= link_to invited.event.name, event_path %>
+          <%= link_to invited.event.name, event_path %> <%= invited.event.date %>
         </li>
       </ul>
     <% end %><br>
@@ -20,7 +20,7 @@
       <% if invited.event.date < Time.now %>
         <ul>
           <li>
-            <%= link_to invited.event.name, event_path %>
+            <%= link_to invited.event.name, event_path %> <%= invited.event.date %>
           </li>
         </ul>
       <% end %><br>
