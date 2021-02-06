@@ -8,7 +8,7 @@
   <% end %>
 </ul><br>
 <% Invited.where(user_id: @user.id).each do |invited| %>
-  <h3>He will go to:</h3>
+  <h3>Upcoming events:</h3>
     <% if invited.event.date > Time.now %>
       <ul>
         <li>
@@ -16,7 +16,7 @@
         </li>
       </ul>
     <% end %><br>
-  <h3>In the past he went to:</h3>
+  <h3>Previously attended events:</h3>
       <% if invited.event.date < Time.now %>
         <ul>
           <li>
